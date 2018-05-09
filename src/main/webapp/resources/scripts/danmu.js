@@ -138,7 +138,7 @@ function getDanmu() {
                         if (danmus[j]) {
                             console.log("danmu:" + danmus[j]);
                             var content = danmus[j]["contents"];
-                            setTimeout(function () { pushtext(content) },1000);
+                            pushtext(content);
                         }
 
                     }
@@ -173,10 +173,7 @@ document.onkeydown = function (event) {
     if (e && e.keyCode == 13) {
         //要做的事情
         e.preventDefault();
-        var messvalue = $("#message").val();
-        if (messvalue.length > 0) {
-            pushtext();
-        }
+        pushDanmu();
     }
 };
 
