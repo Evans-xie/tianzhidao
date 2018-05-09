@@ -131,3 +131,6 @@ fabric.properties
 
 # End of https://www.gitignore.io/api/eclipse,intellij
 QingXie/target/classes/com/selfcreate/qingxie/controller/avtivity/ActivityController.class
+
+
+*.properties
