@@ -134,3 +134,4 @@ QingXie/target/classes/com/selfcreate/qingxie/controller/avtivity/ActivityContro
 
 
 *.properties
+src/main/resources/database.properties
