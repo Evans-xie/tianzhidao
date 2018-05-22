@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import runtheworld.dto.Message;
-import runtheworld.entity.user.User;
+import runtheworld.entity.User;
 import runtheworld.exception.UserLoginException;
 import runtheworld.service.UserService;
 
@@ -29,7 +29,7 @@ public class UserController {
     public Message getUser(HttpServletRequest request, @RequestBody HashMap<String, Object> loginDemo) {
         if (loginDemo != null) {
             try {
-                Integer id = (Integer) loginDemo.get("id");
+                Long id = (Long) loginDemo.get("id");
                 String password = (String) loginDemo.get("password");
                 User user = userService.getUser(id, password);
                 if (user == null) {

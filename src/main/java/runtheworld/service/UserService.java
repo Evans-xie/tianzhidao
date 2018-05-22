@@ -1,17 +1,24 @@
 package runtheworld.service;
 
 import org.springframework.stereotype.Service;
-import runtheworld.entity.user.User;
+import runtheworld.entity.User;
+
 
 @Service
 public interface UserService {
 
 
-    public User getUser (Integer id,String password);
+    /**
+     * 根据id和password获取用户
+     * @param id
+     * @param password
+     * @return
+     */
+    public User getUser (Long id, String password);
 
     public boolean addUser(User user);
 
-    public boolean isUserExist(Integer id);
+    public boolean isUserExist(Long id);
 
     public boolean isUserCorrert(User user);
 }
