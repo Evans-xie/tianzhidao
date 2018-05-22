@@ -8,16 +8,16 @@
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://:3306/runtheworld"
-                        userId=""
-                        password="">
+                        connectionURL="jdbc:mysql://123.207.87.34:3306/runtheworld?useSSL=false"
+                        userId="tianzhidao"
+                        password="shaolike123">
         </jdbcConnection>
 
         <javaTypeResolver >
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="runtheworld.entity" targetProject=".\src\main\java">
+        <javaModelGenerator targetPackage="runtheworld.entity.user" targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -27,10 +27,12 @@
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="runtheworld.dao"  targetProject=".\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="runtheworld.dao.user"  targetProject=".\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
-        <table tableName="danmu"/>
+        <table tableName="user" domainObjectName="User">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
         <!--<table schema="seckill" tableName="ALLTYPES" domainObjectName="Customer" >-->
             <!--<property name="useActualColumnNames" value="true"/>-->
             <!--<generatedKey column="ID" sqlStatement="DB2" identity="true" />-->
