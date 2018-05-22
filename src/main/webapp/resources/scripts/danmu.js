@@ -105,6 +105,7 @@ function pushDanmu() {
         danmu.danmu.time=new Date();
         danmu.danmu.color="#000000";
         danmu.danmu.viewId="123";
+        danmu.danmu.userId="1";
         ajaxRequestPost(danmu.URl.danmu(123),"POST",danmu.danmu);
         $("#fontdiv").append("<pre class='oldp' style='width: " + message.length + "em'>" + message + "</pre>");
         $("#message").val("");
