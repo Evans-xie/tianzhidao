@@ -87,7 +87,13 @@
 			<artifactId>c3p0</artifactId>
 			<version>0.9.1.2</version>
 		</dependency>
-
+		<!-- 导入pageHelper类 -->
+		<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.1.2</version>
+		</dependency>
 		<!-- Servlet web 相关依赖 -->
 		<dependency>
 			<groupId>taglibs</groupId>

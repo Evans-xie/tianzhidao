@@ -10,7 +10,15 @@ import java.util.List;
  */
 
 public interface DanmuService {
-	public List<Danmu> getLatestDanmu(String key,long offset,long limit) throws ServerInnerException;
-	public List<Danmu> getLatestDanmu(String key,long limit) throws ServerInnerException;
-	public void putDanmu(String key,Danmu record) throws ServerInnerException;
+	public List<Danmu> getLatestDanmu(long viewId,Integer offset,Integer limit) throws ServerInnerException;
+	public List<Danmu> getLatestDanmu(long viewId,Integer limit) throws ServerInnerException;
+	public void putDanmu(long viewId,Danmu record) throws ServerInnerException;
+
+	/**
+	 * mysql 实现
+	 */
+	public List<Danmu> pullDanmu(long viewId);
+	public List<Danmu> pullMyDanmu(long userId);
+	public void pushDanmu(Danmu record);
+	public void deleteDanmu(long danmuId);
 }
