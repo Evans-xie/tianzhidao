@@ -1,5 +1,7 @@
 package runtheworld.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import runtheworld.dto.Message;
 import runtheworld.entity.User;
+import runtheworld.entity.UserDemo.UserLogin;
 import runtheworld.exception.UserLoginException;
 import runtheworld.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 
 /**
  * Copyright(C) 2018-2018
@@ -20,18 +22,26 @@ import java.util.HashMap;
  */
 @RestController
 @RequestMapping(value = "/user/")
+@Api(value = "/UserController",description = "用户登陆与注册接口")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    /**
+     * HashMap中存储的是{name,password}
+     * @param request
+     * @param loginDemo
+     * @return
+     */
+    @ApiOperation(value = "用户登陆接口",notes = "根据用户的name和password来登陆")
     @PostMapping(value = "login")
-    public Message getUser(HttpServletRequest request, @RequestBody HashMap<String, Object> loginDemo) {
+    public Message getUser(HttpServletRequest request, @RequestBody UserLogin loginDemo) {
         if (loginDemo != null) {
             try {
-                Long id = (Long) loginDemo.get("id");
-                String password = (String) loginDemo.get("password");
-                User user = userService.getUser(id, password);
+                String name = loginDemo.getName();
+                String password = loginDemo.getPassword();
+                User user = userService.getUser(name, password);
                 if (user == null) {
                     return new Message(200, "账号密码输入错误");
                 } else {
@@ -44,11 +54,12 @@ public class UserController {
         return new Message(400,"客户端错误");
     }
 
+    @ApiOperation(value = "注册",notes = "注册")
     @PostMapping(value = "user")
     public Message addUser(HttpServletRequest request, @RequestBody User newUser) {
         if (newUser != null) {
             try {
-                if (userService.isUserExist(newUser.getId()))
+                if (userService.isUserExist(newUser.getName()))
                     return new Message(200, "该账号已存在");
 
                 if (!userService.isUserCorrert(newUser))

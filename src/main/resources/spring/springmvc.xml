@@ -25,4 +25,6 @@
     </bean>
     <!--4：扫描web相关的bean-->
     <context:component-scan base-package="runtheworld.controller"/>
+
+    <bean class="common.SwaggerConfig"/>
 </beans>

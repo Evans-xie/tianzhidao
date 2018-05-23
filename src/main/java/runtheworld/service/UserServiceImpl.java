@@ -1,9 +1,10 @@
 package runtheworld.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import runtheworld.dao.user.UserMapper;
-import runtheworld.entity.user.User;
-import runtheworld.entity.user.UserExample;
+import runtheworld.dao.UserMapper;
+import runtheworld.entity.User;
+import runtheworld.entity.UserExample;
+import runtheworld.entity.UserExample.Criteria;
 
 import java.util.List;
 
@@ -15,13 +16,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private  UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
-    public User getUser(Integer id,String password) {
+    public User getUser(String name, String password) {
         UserExample userExample = new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andIdEqualTo(id);
+        Criteria criteria = userExample.createCriteria();
+        criteria.andNameEqualTo(name);
         criteria.andPasswordEqualTo(password);
         List<User> users = userMapper.selectByExample(userExample);
         if (users.isEmpty()){
@@ -41,15 +42,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserCorrert(User user){
-        if (user.getName() == null ||user.getPassword() ==null ||user.getClass_name() ==null){
+        if (user.getName() == null ||user.getPassword() ==null ||user.getClassName() ==null){
             return  false;
         }
         return  true;
     }
 
     @Override
-    public boolean isUserExist(Integer id){
-        if (userMapper.selectByPrimaryKey(id) !=null){
+    public boolean isUserExist(String name){
+        UserExample userExample = new UserExample();
+        Criteria criteria = userExample.createCriteria();
+        criteria.andNameEqualTo(name);
+        if (userMapper.selectByExample(userExample) !=null){
             return  true;
         }
         return false;

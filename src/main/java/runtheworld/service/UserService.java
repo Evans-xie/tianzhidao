@@ -10,15 +10,15 @@ public interface UserService {
 
     /**
      * 根据id和password获取用户
-     * @param id
+     * @param name
      * @param password
      * @return
      */
-    public User getUser (Long id, String password);
+    public User getUser (String name, String password);
 
     public boolean addUser(User user);
 
-    public boolean isUserExist(Long id);
+    public boolean isUserExist(String name);
 
     public boolean isUserCorrert(User user);
 }
