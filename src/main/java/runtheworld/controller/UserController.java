@@ -54,13 +54,19 @@ public class UserController {
         return new Message(400,"客户端错误");
     }
 
-    @ApiOperation(value = "注册",notes = "注册")
+    /**
+     * 账号注册接口
+     * @param request
+     * @param newUser
+     * @return
+     */
+    @ApiOperation(value = "注册",notes = "注册,不传id")
     @PostMapping(value = "user")
     public Message addUser(HttpServletRequest request, @RequestBody User newUser) {
         if (newUser != null) {
             try {
                 if (userService.isUserExist(newUser.getName()))
-                    return new Message(200, "该账号已存在");
+                    return new Message(201, "该账号已存在");
 
                 if (!userService.isUserCorrert(newUser))
                     return new Message(200, "信息不完整");

@@ -1,6 +1,7 @@
 package runtheworld.entity;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "id",hidden = true)
     private Long id;
 
     /**
@@ -20,6 +22,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "登陆账号",required = true,example = "xieyihong")
     private String name;
 
     /**
@@ -28,6 +31,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "登陆密码",required = true,example = "122")
     private String password;
 
     /**
@@ -36,6 +40,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "性别，用“男”或“女”表示",example = "男")
     private String gender;
 
     /**
@@ -44,6 +49,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "班级名称",example = "人力1501")
     private String className;
 
     /**
@@ -52,6 +58,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "头像")
     private String icon;
 
     /**
@@ -60,6 +67,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "城市")
     private String city;
 
     /**
@@ -68,6 +76,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "简介")
     private String profile;
 
     /**
@@ -76,6 +85,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "创建用户时间",hidden = true)
     private Date gmtCreate;
 
     /**
@@ -84,6 +94,7 @@ public class User {
      *
      * @mbggenerated Tue May 22 12:44:23 GMT+08:00 2018
      */
+    @ApiModelProperty(value = "修改用户时间",hidden = true)
     private Date gmtModified;
 
     /**
@@ -324,5 +335,21 @@ public class User {
      */
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", gender='" + gender + '\'' +
+                ", className='" + className + '\'' +
+                ", icon='" + icon + '\'' +
+                ", city='" + city + '\'' +
+                ", profile='" + profile + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                '}';
     }
 }

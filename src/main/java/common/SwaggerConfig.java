@@ -22,7 +22,7 @@ public class SwaggerConfig {
     public Docket buildDocket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(buildApiInfo())
-                .select().apis(RequestHandlerSelectors.basePackage("com.leeyom.controller"))// controller路径。
+                .select().apis(RequestHandlerSelectors.basePackage("runtheworld.controller"))// controller路径。
                 .paths(PathSelectors.any())
                 .build();
     }
