@@ -1,5 +1,8 @@
 package runtheworld.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,58 +11,69 @@ import java.util.Date;
  *
  * @author evans 2018/5/6 14:15
  */
-
+@ApiModel(value = "danmu",description = "弹幕对象")
 public class Danmu implements Serializable {
 
 	private static final long serialVersionUID = -7898194272883238670L;
 
+	@ApiModelProperty(value = "id",hidden = true)
     private Long id;
 
     /**
      * 发送者id
      */
+    @ApiModelProperty(value = "用户id",required = true,example = "1")
     private Long userId;
 
     /**
      * 场景id
      */
+    @ApiModelProperty(value = "全景图id(viewId)",required = true,example = "1")
     private Long viewId;
 
 	/**
 	 * 弹幕内容
 	 */
+	@ApiModelProperty(value = "弹幕内容",required = true,example = "hello ShareHao")
 	private String contents;
 
     /**
      * x,y坐标
      */
+    @ApiModelProperty(value = "图片上的横坐标",example = "0")
     private Double x;
 
+    @ApiModelProperty(value = "图片上的纵坐标",example = "1")
     private Double y;
 
     /**
      * 弹幕颜色
      */
+    @ApiModelProperty(value = "弹幕颜色,rgb表示",example ="#FFFFFF" )
     private String color;
 
     /**
      * 点赞次数
      */
+    @ApiModelProperty(value = "点赞次数",hidden = true)
     private Integer zanTimes;
 
     /**
      * 创建时间
      */
+    @ApiModelProperty(value = "创建弹幕时间",hidden = true)
     private Date gmtCreate;
 
     /**
      * 修改时间
      */
+    @ApiModelProperty(value = "修改弹幕时间(删除时间)",hidden = true)
     private Date gmtModified;
 
     /**
      * 是否已删除
      */
+    @ApiModelProperty(value = "逻辑删除，0:否,1:是",hidden = true)
     private Byte isDeleted;
 
 

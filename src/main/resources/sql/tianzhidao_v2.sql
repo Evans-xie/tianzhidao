@@ -82,6 +82,7 @@ CREATE TABLE `shot`(
   `location` VARCHAR(10) COMMENT '地点',
   `path` VARCHAR(50) COMMENT '图片访问地址',
   `has_motto` TINYINT COMMENT '0为否，1为真',
+  `min_shot` VARCHAR(50) COMMENT '图片对应的略缩图地址',
   `description` VARCHAR(50) COMMENT '备用字段，在选择到此图片的时候，可以弹出描述框'
 )COMMENT '时间地点可供选择，在图片右下角一起显示';
 
